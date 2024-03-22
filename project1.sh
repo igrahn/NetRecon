@@ -8,10 +8,8 @@
 # Main Menu Function
 function main_menu() {
   echo "---------- Main Menu ----------"
-  echo -e "\n1) Ping Sweep   3) Print Screen Results \n"
-  echo -e "2) Port Scan    4) Exit \n"
   
-  select option in 1 2 3 4
+  select option in "Ping Sweep" "Port Scan" "Print Screen Results" "Exit"
   do
     case $option in
 
