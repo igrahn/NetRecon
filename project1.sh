@@ -6,13 +6,30 @@
 # This script ...
 
 # Main Menu Function
-function main_menu () {
+function main_menu() {
   echo "---------- Main Menu ----------"
   echo -e "\n1) Ping Sweep   3) Print Screen Results \n"
   echo -e "2) Port Scan    4) Exit \n"
+  
+  select option in 1 2 3 4
+  do
+    case $option in
+
+      1)
+        pingSweep
+        ;;
+      2)
+        portScan
+        ;;
+      3)
+        printScanResults
+        ;;
+      4)
+        exitProgram
+        ;;
 }
 # Ping Sweep Function
-function ping_sweep () {
+function pingSweep() {
   echo "---------- Ping Sweep ----------"
   echo -e "\n"
 }
