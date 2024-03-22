@@ -47,10 +47,12 @@ function printScanResults() {
         if [[ $scan_result == "Ping Sweep Results" ]]; then
             cat pingsweepresults.txt
         elif [[ $scan_result == "Clear Ping Sweep Results" ]]; then
+            echo "" > pingsweepresults.txt
             echo "Cleared!"
         elif [[ $scan_result == "Port Scan Results" ]]; then
             cat portscanresults.txt
         elif [[ $scan_result == "Clear Port Scan Results" ]]; then
+            echo "" > portscanresults.txt
             echo "Cleared!"
         elif [[ $scan_result == "Exit" ]]; then
             return
