@@ -8,7 +8,7 @@
 # Main Menu Function
 function main_menu() {
   echo "---------- Main Menu ----------"
-  choices=("Ping Sweep" "Port Scan" "Print Screen Results" "Exit")
+  choices=("1) Ping Sweep" "2) Port Scan" "3) Print Screen Results" "4) Exit")
   select option in "${choices[@]}"; do
     case $option in
 
