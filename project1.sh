@@ -8,9 +8,8 @@
 # Main Menu Function
 function main_menu() {
   echo "---------- Main Menu ----------"
-  
-  select option in "Ping Sweep" "Port Scan" "Print Screen Results" "Exit"
-  do
+  choices=("Ping Sweep" "Port Scan" "Print Screen Results" "Exit")
+  select option in "${choices[@]}"; do
     case $option in
 
       1)
@@ -25,7 +24,14 @@ function main_menu() {
       4)
         exitProgram
         ;;
+      *)
+        echo "Invalid choice!"
+        ;;
+    esac
+  done
 }
+
+
 # Ping Sweep Function
 function pingSweep() {
   echo "---------- Ping Sweep ----------"
