@@ -40,8 +40,9 @@ function portScan() {
 # Print Scan Results Function
 function printScanResults() {
     echo "--- Print Scan Results ---"
+    echo "What would you like to do?"
 
-    select scan_result in "Ping Sweep Results" "Clear Ping Sweep Results" "Port Scan Results" "Clear Port Scan Results" "Exit"; do
+    select scan_result in "Ping Sweep Results" "Clear Ping Sweep Results" "Port Scan Results" "Clear Port Scan Results" "Return to Main Menu"; do
         echo "$scan_result:"
 
         if [[ $scan_result == "Ping Sweep Results" ]]; then
@@ -54,7 +55,7 @@ function printScanResults() {
         elif [[ $scan_result == "Clear Port Scan Results" ]]; then
             echo "" > portscanresults.txt
             echo "Cleared!"
-        elif [[ $scan_result == "Exit" ]]; then
+        elif [[ $scan_result == "Return to Main Menu" ]]; then
             return
         fi
 
