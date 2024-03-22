@@ -6,13 +6,13 @@
 # This script ...
 
 # Main Menu Function
-main_menu () {
+function main_menu () {
   echo "---------- Main Menu ----------"
   echo -e "\n1) Ping Sweep   3) Print Screen Results \n"
   echo -e "2) Port Scan    4) Exit \n"
 }
 # Ping Sweep Function
-ping_sweep () {
+function ping_sweep () {
   echo "---------- Ping Sweep ----------"
   echo -e "\n"
 }
