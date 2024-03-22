@@ -8,10 +8,13 @@
 # Main Menu Function
 main_menu () {
   echo "---------- Main Menu ----------"
+  echo -e "1) Ping Sweep   3) Print Screen Results \n"
+  echo -e "2) Port Scan    4) Exit \n"
 }
 # Ping Sweep Function
 ping_sweep () {
   echo "---------- Ping Sweep ----------"
+  echo -e "\n"
 }
 
 # Port Scan. Scans a target IP for open ports
@@ -55,3 +58,8 @@ function printScanResults() {
 
     done
 }
+
+
+# Main Program
+
+main_menu
