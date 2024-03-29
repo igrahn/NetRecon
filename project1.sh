@@ -10,8 +10,6 @@ function main_menu() {
   echo "---------- Main Menu ----------"
   choices=("Ping Sweep" "Port Scan" "Print Screen Results" "Exit")
 
-PS3=""
-
   select option in "${choices[@]}"; do
     case $option in
 
