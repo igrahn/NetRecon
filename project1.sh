@@ -9,19 +9,22 @@
 function main_menu() {
   echo "---------- Main Menu ----------"
   choices=("Ping Sweep" "Port Scan" "Print Screen Results" "Exit")
+
+PS3=""
+
   select option in "${choices[@]}"; do
     case $option in
 
-      1)
+      "Ping Sweep")
         pingSweep
         ;;
-      2)
+      "Port Scan")
         portScan
         ;;
-      3)
+      "Pring Screen Results")
         printScanResults
         ;;
-      4)
+      "Exit")
         exitProgram
         ;;
       *)
@@ -36,6 +39,25 @@ function main_menu() {
 function pingSweep() {
   echo "---------- Ping Sweep ----------"
   echo -e "\n"
+  echo -e "The ping sweep functionality will require you to enter the chosen IP address in 3 separate parts. 
+  			For example, 192.15.104.5, you will enter 192, then 15, then 104. The program will then sweep
+  				the given IP. \n"
+  read -p "Enter first IP address number: " sweepIp_1
+  read -p "Enter first IP address number: " sweepIp_2
+  read -p "Enter first IP address number: " sweepIp_3
+  
+  target_ip="${sweepIP_1}.${sweepIp_2}.${sweepIp_3}"
+  
+  echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n"
+  for port in {1..100}; do
+  	target="${target_ip}.${port}"
+  	ping -c 1 -w 1 "$target"
+  	if [ $? -eq 0 ]; then
+  		echo -e "${target} is open\n"
+    else
+      echo -e "${target}\n"
+  	fi
+  done
 }
 
 # Port Scan. Scans a target IP for open ports
@@ -85,5 +107,4 @@ function printScanResults() {
 
 
 # Main Program
-
 main_menu
