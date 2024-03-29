@@ -44,7 +44,7 @@ function pingSweep() {
   read -p "Enter first IP address number: " sweepIp_2
   read -p "Enter first IP address number: " sweepIp_3
   
-  target_ip="${sweepIP_1}.${sweepIp_2}.${sweepIp_3}"
+  target_ip="${sweepIp_1}.${sweepIp_2}.${sweepIp_3}"
   
   echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee pingsweepresults.txt
   for port in {1..100}; do
