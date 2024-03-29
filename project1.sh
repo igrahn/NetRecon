@@ -49,7 +49,7 @@ function pingSweep() {
   echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee pingsweepresults.txt
   for port in {1..100}; do
   	target="${target_ip}.${port}"
-  	ping -c 1 -w 1 "$target"
+  	ping "$target"
   	if [ $? -eq 0 ]; then
   		echo -e "${target} is open\n" | tee pingsweepresults.txt
     else
