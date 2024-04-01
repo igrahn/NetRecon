@@ -45,25 +45,25 @@ function pingSweep() {
   read -p "Enter first IP address number: " sweepIp_3
   
   target_ip="${sweepIp_1}.${sweepIp_2}.${sweepIp_3}"
-  
-  echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee pingsweepresults.txt
+
+  date >> pingsweepresults.txt  
+  echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee -a pingsweepresults.txt
   for port in {1..100}; do
   	target="${target_ip}.${port}"
-  	ping "$target"
-  	if [ $? -eq 0 ]; then
-  		echo -e "${target} is open\n" | tee pingsweepresults.txt
+  	if ping -c 1 -W 1 "$target" &> /dev/null; then
+  		echo -e "${target} is open\n" | tee -a pingsweepresults.txt
     else
-      echo -e "${target}\n" | tee pingsweepresults.txt
+      echo -e "${target}\n" | tee -a pingsweepresults.txt
   	fi
   done
 }
 
 # Port Scan. Scans a target IP for open ports
 function portScan() {
-    echo "--- Port Scan ---"
+    echo "---------- Port Scan ----------"
     date >> portscanresults.txt
 
-    read -p "IP addr to scan (no CIDR notation): " target_ip
+    read -p "IP address to scan (no CIDR notation): " target_ip
 
     for port in {1..100}; do
         nc -z $target_ip $port
@@ -80,7 +80,7 @@ function portScan() {
 
 # Print Scan Results Function
 function printScanResults() {
-    echo "--- Print Scan Results ---"
+    echo "-------- Print Scan Results --------"
     echo "What would you like to do?"
 
     select scan_result in "Ping Sweep Results" "Clear Ping Sweep Results" "Port Scan Results" "Clear Port Scan Results" "Return to Main Menu"; do
