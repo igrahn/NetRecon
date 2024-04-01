@@ -52,7 +52,7 @@ function pingSweep() {
         if ping -c 1 -W 1 "$target" &> /dev/null; then
             echo -e "${target} is open\n" | tee -a pingsweepresults.txt
         else
-        echo -e "${target}\n" | tee -a pingsweepresults.txt
+            echo -e "${target}\n" | tee -a pingsweepresults.txt
         fi
     done
     main_menu
@@ -98,10 +98,9 @@ function printScanResults() {
             echo "" > portscanresults.txt
             echo "Cleared!"
         elif [[ $scan_result == "Return to Main Menu" ]]; then
-            return
+            main_menu
         fi
     done
-    main_menu
 }
 
 function exitProgram() {
