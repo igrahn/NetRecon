@@ -48,7 +48,7 @@ function pingSweep() {
 
   date >> pingsweepresults.txt  
   echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee -a pingsweepresults.txt
-  for port in {1..100}; do
+  for port in {1..5}; do
   	target="${target_ip}.${port}"
   	if ping -c 1 -W 1 "$target" &> /dev/null; then
   		echo -e "${target} is open\n" | tee -a pingsweepresults.txt
@@ -56,6 +56,7 @@ function pingSweep() {
       echo -e "${target}\n" | tee -a pingsweepresults.txt
   	fi
   done
+  main_menu
 }
 
 # Port Scan. Scans a target IP for open ports
@@ -76,6 +77,7 @@ function portScan() {
             echo "$port: closed" >> portscanresults.txt
         fi
     done
+    main_menu
 }
 
 # Print Scan Results Function
@@ -99,10 +101,28 @@ function printScanResults() {
         elif [[ $scan_result == "Return to Main Menu" ]]; then
             return
         fi
-
     done
+    main_menu
 }
 
+function exitProgram() {
+  condition="n"
+  while [[ $condition != "y" ]]; do
+    read -p "Are you sure you want to exit? (Y/N): " choice
+    choice=$(echo "$choice" | tr '[:upper:]' '[:lower:]')
+    if [[ $choice == "y" ]]; then
+      echo -e "Exiting program...\n"
+      condition="y"
+      exit 
+    elif [[ $choice == "n" ]]; then
+      echo -e "Program will not exit...\n"
+      main_menu
+    else
+      echo "Invalid selection. Try again."
+    fi
+  done
+}
 
 # Main Program
+echo -e "\n"
 main_menu
