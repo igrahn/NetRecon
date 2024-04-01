@@ -19,7 +19,7 @@ function main_menu() {
         "Port Scan")
             portScan
             ;;
-        "Pring Screen Results")
+        "Print Screen Results")
             printScanResults
             ;;
         "Exit")
