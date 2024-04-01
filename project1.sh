@@ -7,56 +7,55 @@
 
 # Main Menu Function
 function main_menu() {
-  echo "---------- Main Menu ----------"
-  choices=("Ping Sweep" "Port Scan" "Print Screen Results" "Exit")
+    echo "---------- Main Menu ----------"
+    choices=("Ping Sweep" "Port Scan" "Print Screen Results" "Exit")
 
-  select option in "${choices[@]}"; do
-    case $option in
+    select option in "${choices[@]}"; do
+        case $option in
 
-      "Ping Sweep")
-        pingSweep
-        ;;
-      "Port Scan")
-        portScan
-        ;;
-      "Pring Screen Results")
-        printScanResults
-        ;;
-      "Exit")
-        exitProgram
-        ;;
-      *)
-        echo "Invalid choice!"
-        ;;
-    esac
-  done
+        "Ping Sweep")
+            pingSweep
+            ;;
+        "Port Scan")
+            portScan
+            ;;
+        "Pring Screen Results")
+            printScanResults
+            ;;
+        "Exit")
+            exitProgram
+            ;;
+        *)
+            echo "Invalid choice!"
+            ;;
+        esac
+    done
 }
-
 
 # Ping Sweep Function
 function pingSweep() {
-  echo "---------- Ping Sweep ----------"
-  echo -e "\n"
-  echo -e "The ping sweep functionality will require you to enter the chosen IP address in 3 separate parts. 
-  			For example, 192.15.104.5, you will enter 192, then 15, then 104. The program will then sweep
-  				the given IP. \n"
-  read -p "Enter first IP address number: " sweepIp_1
-  read -p "Enter first IP address number: " sweepIp_2
-  read -p "Enter first IP address number: " sweepIp_3
-  
-  target_ip="${sweepIp_1}.${sweepIp_2}.${sweepIp_3}"
+    echo "---------- Ping Sweep ----------"
+    echo -e "\n"
+    echo -e "The ping sweep functionality will require you to enter the chosen IP address in 3 separate parts.
+             For example, 192.15.104.5, you will enter 192, then 15, then 104. The program will then sweep
+             the given IP. \n"
+    read -p "Enter first IP address number: " sweepIp_1
+    read -p "Enter first IP address number: " sweepIp_2
+    read -p "Enter first IP address number: " sweepIp_3
 
-  date >> pingsweepresults.txt  
-  echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee -a pingsweepresults.txt
-  for port in {1..5}; do
-  	target="${target_ip}.${port}"
-  	if ping -c 1 -W 1 "$target" &> /dev/null; then
-  		echo -e "${target} is open\n" | tee -a pingsweepresults.txt
-    else
-      echo -e "${target}\n" | tee -a pingsweepresults.txt
-  	fi
-  done
-  main_menu
+    target_ip="${sweepIp_1}.${sweepIp_2}.${sweepIp_3}"
+
+    date >> pingsweepresults.txt
+    echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee -a pingsweepresults.txt
+    for port in {1..5}; do
+        target="${target_ip}.${port}"
+        if ping -c 1 -W 1 "$target" &> /dev/null; then
+            echo -e "${target} is open\n" | tee -a pingsweepresults.txt
+        else
+        echo -e "${target}\n" | tee -a pingsweepresults.txt
+        fi
+    done
+    main_menu
 }
 
 # Port Scan. Scans a target IP for open ports
@@ -106,21 +105,21 @@ function printScanResults() {
 }
 
 function exitProgram() {
-  condition="n"
-  while [[ $condition != "y" ]]; do
-    read -p "Are you sure you want to exit? (Y/N): " choice
-    choice=$(echo "$choice" | tr '[:upper:]' '[:lower:]')
-    if [[ $choice == "y" ]]; then
-      echo -e "Exiting program...\n"
-      condition="y"
-      exit 
-    elif [[ $choice == "n" ]]; then
-      echo -e "Program will not exit...\n"
-      main_menu
-    else
-      echo "Invalid selection. Try again."
-    fi
-  done
+    condition="n"
+    while [[ $condition != "y" ]]; do
+        read -p "Are you sure you want to exit? (Y/N): " choice
+        choice=$(echo "$choice" | tr '[:upper:]' '[:lower:]')
+        if [[ $choice == "y" ]]; then
+            echo -e "Exiting program...\n"
+            condition="y"
+            exit
+        elif [[ $choice == "n" ]]; then
+            echo -e "Program will not exit...\n"
+            main_menu
+        else
+            echo "Invalid selection. Try again."
+        fi
+    done
 }
 
 # Main Program
