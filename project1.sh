@@ -3,7 +3,7 @@
 # Group member 1: Ian Grahn
 # Group member 2: Calvin Lindemann
 # ERAU CI 201 / 01PC
-# This script serves as a tool for network reconaissance 
+# This script serves as a tool for network reconnaissance
 #     with various tools for developers.
 
 # Main Menu Function
@@ -35,9 +35,9 @@ function mainMenu() {
 # Ping Sweep Function
 function pingSweep() {
   echo -e "\n---------- Ping Sweep ----------"
-  echo -e "The ping sweep functionality will require you 
-to enter the chosen IP address in 3 separate parts. 
-For example, 192.15.104.5, you will enter 192, then 15, then 104. 
+  echo -e "The ping sweep functionality will require you
+to enter the chosen IP address in 3 separate parts.
+For example, 192.15.104.5, you will enter 192, then 15, then 104.
 The program will then sweep the given IP. \n"
   read -p "Enter first IP address number: " sweepIp_1
   read -p "Enter first IP address number: " sweepIp_2
@@ -48,10 +48,10 @@ The program will then sweep the given IP. \n"
       echo -e "\nError: You must input an integer for all three values! Aborting ping sweep!.\n"
       mainMenu
   fi
-  
+
   target_ip="${sweepIp_1}.${sweepIp_2}.${sweepIp_3}"
 
-  date >> pingsweepresults.txt  
+  date >> pingsweepresults.txt
   echo -e "Searching ${target_ip}.1 to ${target_ip}.100...\n" | tee -a pingsweepresults.txt
   for port in {1..100}; do
   	target="${target_ip}.${port}"
@@ -73,12 +73,11 @@ function portScan() {
 
     for port in {1..100}; do
       nc -z $target_ip $port
-      scan_success=$?
 
-      if [[ $scan_success == 0 ]]; then
-        echo "$port: OPEN!" >> portscanresults.txt
+      if [[ $? == 0 ]]; then
+        echo "$port: OPEN!" | tee -a portscanresults.txt
       else
-        echo "$port: closed" >> portscanresults.txt
+        echo "$port: closed" | tee -a portscanresults.txt
       fi
     done
     mainMenu
