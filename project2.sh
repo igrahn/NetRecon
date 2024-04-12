@@ -61,7 +61,30 @@ function diskManagement() {
 }
 
 function fileManagement() {
+  choices=("Present working directory" "List directory contents" "Create a file" "Change file permissions" "Remove a file" "Read a file" "Main menu")
+  select option in "${choices[@]}"; do
+  case $option in
+    "Present working directory")
 
+    ;;
+    "List directory contents")
+
+    ;;
+    "Create a file")
+
+    ;;
+    "Change file permissions")
+
+    ;;
+    "Remove a file")
+
+    ;;
+    "Read a file")
+
+    ;;
+    "Main menu")
+    mainMenu
+    ;;
 }
 
 function networkManagement() {
