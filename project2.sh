@@ -5,7 +5,7 @@
 # @TODO: add description.
 
 #Main Menu Function
-function mainMenu(){
+function mainMenu() {
 choices=("Disk Management" "File Management" "Network Management" "Process Management" "User Account Management" "Utilities")
 
 select option in "${choices[@]}"; do
@@ -33,4 +33,16 @@ select option in "${choices[@]}"; do
       ;;
     esac
   done
+}
+
+function diskManagement() {
+
+}
+
+function fileManagement() {
+
+}
+
+function networkManagement() {
+
 }
