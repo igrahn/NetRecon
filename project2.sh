@@ -17,7 +17,7 @@ select option in "${choices[@]}"; do
       fileManagement
       ;;
     "Network Management")
-      fileManagement
+      networkManagement
       ;;
     "Process Management")
       processManagement
