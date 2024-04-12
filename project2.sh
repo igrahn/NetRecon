@@ -6,7 +6,7 @@
 
 #Main Menu Function
 function mainMenu() {
-choices=("Disk Management" "File Management" "Network Management" "Process Management" "User Account Management" "Utilities")
+choices=("Disk Management" "File Management" "Network Management" "Process Management" "User Account Management" "Utilities" "Exit")
 
 select option in "${choices[@]}"; do
   case $option in
@@ -27,6 +27,9 @@ select option in "${choices[@]}"; do
       ;;
     "Utilities")
       utilities
+      ;;
+    "Exit"
+      exit
       ;;
     *)
       echo -e "Invalid Selection!\n"
