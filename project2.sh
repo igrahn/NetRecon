@@ -39,7 +39,25 @@ select option in "${choices[@]}"; do
 }
 
 function diskManagement() {
+  echo -e "-----Disk Management-----"
+  choices=("Display device info" "Display disk partition info" "Display block device info" "Display mounted disk info" "Main menu")
+  select option in "${choices[@]}"; do
+  case $option in
+    "Display device info")
 
+    ;;
+    "Display disk parititon info")
+
+    ;;
+    "Display block device info")
+
+    ;;
+    "Display mounted disk info")
+
+    ;;
+    "Main menu"
+    mainMenu
+    ;;
 }
 
 function fileManagement() {
