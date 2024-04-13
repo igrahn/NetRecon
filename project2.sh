@@ -42,49 +42,53 @@ function diskManagement() {
   echo -e "-----Disk Management-----\n"
   choices=("Display device info" "Display disk partition info" "Display block device info" "Display mounted disk info" "Main menu")
   select option in "${choices[@]}"; do
-  case $option in
-    "Display device info")
-
-    ;;
-    "Display disk parititon info")
-
-    ;;
-    "Display block device info")
-
-    ;;
-    "Display mounted disk info")
-
-    ;;
-    "Main menu")
-    mainMenu
-    ;;
+    case $option in
+      "Display device info")
+  
+      ;;
+      "Display disk parititon info")
+  
+      ;;
+      "Display block device info")
+  
+      ;;
+      "Display mounted disk info")
+  
+      ;;
+      "Main menu")
+      mainMenu
+      ;;
+    esac
+  done
 }
 
 function fileManagement() {
   choices=("Present working directory" "List directory contents" "Create a file" "Change file permissions" "Remove a file" "Read a file" "Main menu")
   select option in "${choices[@]}"; do
-  case $option in
-    "Present working directory")
-
-    ;;
-    "List directory contents")
-
-    ;;
-    "Create a file")
-
-    ;;
-    "Change file permissions")
-
-    ;;
-    "Remove a file")
-
-    ;;
-    "Read a file")
-
-    ;;
-    "Main menu")
-    mainMenu
-    ;;
+    case $option in
+      "Present working directory")
+  
+      ;;
+      "List directory contents")
+  
+      ;;
+      "Create a file")
+  
+      ;;
+      "Change file permissions")
+  
+      ;;
+      "Remove a file")
+  
+      ;;
+      "Read a file")
+  
+      ;;
+      "Main menu")
+      mainMenu
+      ;;
+    esac
+  done
 }
 
 function networkManagement() {
