@@ -45,21 +45,26 @@ function diskManagement() {
   select option in "${choices[@]}"; do
     case $option in
       "Display device info")
+        echo "-------------"
         echo "Device name: " 
         uname
-        echo -e "\n"
         echo "Device stats:"
         uptime
-        echo -e "\n"
       ;;
       "Display disk parititon info")
-  
+        echo "-------------"
+        echo "Disk Partition Info: " 
+        fdisk
       ;;
       "Display block device info")
-  
+        echo "-------------"
+        echo "Block Device Info: " 
+        lsblk
       ;;
       "Display mounted disk info")
-  
+        echo "-------------"
+        echo "Mounted Disk Info: " 
+        df
       ;;
       "Main menu")
       mainMenu
