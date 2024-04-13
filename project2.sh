@@ -28,7 +28,7 @@ select option in "${choices[@]}"; do
     "Utilities")
       utilities
       ;;
-    "Exit"
+    "Exit")
       exit
       ;;
     *)
