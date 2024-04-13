@@ -94,3 +94,5 @@ function fileManagement() {
 function networkManagement() {
 
 }
+
+mainMenu
