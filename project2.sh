@@ -55,7 +55,7 @@ function diskManagement() {
     "Display mounted disk info")
 
     ;;
-    "Main menu"
+    "Main menu")
     mainMenu
     ;;
 }
