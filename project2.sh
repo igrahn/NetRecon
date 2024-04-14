@@ -30,10 +30,11 @@ select option in "${choices[@]}"; do
       utilities
       ;;
     "Exit")
-      exit
+      exit 0
       ;;
     *)
       echo -e "Invalid Selection!\n"
+      mainMenu
       ;;
     esac
   done
@@ -45,29 +46,53 @@ function diskManagement() {
   select option in "${choices[@]}"; do
     case $option in
       "Display device info")
-        echo "-------------"
-        echo "Device name: " 
+        echo "-----------------------------"
+        echo "Device name:" 
         uname
-        echo "Device stats:"
+        echo "Device stats:" 
         uptime
+        echo "-----------------------------"
+        echo -e "\n"
+        echo "Press any key to continue..."
+        read -n 1 -s
+        diskManagement
       ;;
       "Display disk parititon info")
-        echo "-------------"
-        echo "Disk Partition Info: " 
+        eecho "-----------------------------"
+        echo "Disk Partition Info:" 
         fdisk
+        echo "-----------------------------"
+        echo -e "\n"
+        echo "Press any key to continue..."
+        read -n 1 -s
+        diskManagement
       ;;
       "Display block device info")
-        echo "-------------"
-        echo "Block Device Info: " 
+        echo "-----------------------------"
+        echo "Block Device Info:" 
         lsblk
+        echo "-----------------------------"
+        echo -e "\n"
+        echo "Press any key to continue..."
+        read -n 1 -s
+        diskManagement
       ;;
       "Display mounted disk info")
-        echo "-------------"
-        echo "Mounted Disk Info: " 
+        echo "-----------------------------"
+        echo "Mounted Disk Info:" 
         df
+        echo "-----------------------------"
+        echo -e "\n"
+        echo "Press any key to continue..."
+        read -n 1 -s
+        diskManagement
       ;;
       "Main menu")
-      mainMenu
+        mainMenu
+      ;;
+      *)
+      echo -e "Invalid Selection!\n"
+        diskManagement
       ;;
     esac
   done
@@ -101,10 +126,6 @@ function fileManagement() {
       ;;
     esac
   done
-}
-
-function networkManagement() {
-
 }
 
 mainMenu
