@@ -12,28 +12,37 @@ choices=("Disk Management" "File Management" "Network Management" "Process Manag
 select option in "${choices[@]}"; do
   case $option in
     "Disk Management")
+      clear
       diskManagement
       ;;
     "File Management")
+      clear
       fileManagement
       ;;
     "Network Management")
+      clear
       networkManagement
       ;;
     "Process Management")
+      clear
       processManagement
       ;;
     "User Account Management")
+      clear
       userAccountManagement
       ;;
     "Utilities")
+      clear
       utilities
       ;;
     "Exit")
+      clear
       exit 0
       ;;
     *)
-      echo -e "Invalid Selection!\n"
+      clear
+         echo "---------------------------------------------"
+      echo -e "\n------------Invalid Selection!-------------"
       mainMenu
       ;;
     esac
@@ -41,57 +50,68 @@ select option in "${choices[@]}"; do
 }
 
 function diskManagement() {
-  echo -e "\n---------------Disk Management---------------\n"
+  echo "---------------------------------------------"
+  echo -e "---------------Disk Management---------------\n"
   choices=("Display device info" "Display disk partition info" "Display block device info" "Display mounted disk info" "Main menu")
   select option in "${choices[@]}"; do
     case $option in
       "Display device info")
-        echo "-----------------------------"
-        echo "Device name:" 
+        clear
+        echo "--------------------------------------------"
+        echo "-------------Device Information-------------"
+        echo -n "Current user: "
+        whoami
+        echo -n "Kernel name: " 
         uname
-        echo "Device stats:" 
+        echo -n "Device uptime: " 
         uptime
-        echo "-----------------------------"
-        echo -e "\n"
+        echo "--------------------------------------------"
         echo "Press any key to continue..."
         read -n 1 -s
+        clear
         diskManagement
       ;;
-      "Display disk parititon info")
-        eecho "-----------------------------"
-        echo "Disk Partition Info:" 
+      "Display disk partition info")
+        clear
+        echo "--------------------------------------------"
+        echo "---------Disk Partition Information---------"
         fdisk
-        echo "-----------------------------"
-        echo -e "\n"
+        echo "--------------------------------------------"
         echo "Press any key to continue..."
         read -n 1 -s
+        clear
         diskManagement
       ;;
       "Display block device info")
-        echo "-----------------------------"
-        echo "Block Device Info:" 
+        clear
+        echo "--------------------------------------------"
+        echo "----------Block Device Information----------"
         lsblk
-        echo "-----------------------------"
-        echo -e "\n"
+        echo "--------------------------------------------"
         echo "Press any key to continue..."
         read -n 1 -s
+        clear
         diskManagement
       ;;
       "Display mounted disk info")
-        echo "-----------------------------"
-        echo "Mounted Disk Info:" 
+        clear
+        echo "--------------------------------------------"
+        echo "----------Mounted Disk Information----------"
         df
-        echo "-----------------------------"
-        echo -e "\n"
+        echo "--------------------------------------------"
         echo "Press any key to continue..."
         read -n 1 -s
+        clear
         diskManagement
       ;;
       "Main menu")
+        clear
         mainMenu
       ;;
       *)
-      echo -e "Invalid Selection!\n"
+        clear
+        echo "---------------------------------------------"
+        echo -e "\n------------Invalid Selection!-------------"
         diskManagement
       ;;
     esac
@@ -124,8 +144,57 @@ function fileManagement() {
       "Main menu")
       mainMenu
       ;;
+      *)
+         echo "---------------------------------------------"
+      echo -e "\n------------Invalid Selection!-------------"
+        fileManagement
+      ;;
     esac
   done
 }
 
+function networkManagement() {
+  echo -e "\n---------------File Management---------------\n"
+  choices=("ifconfig" "ping" "traceroute" "nslookup" "View network interfaces" "View network routing table" "View current system users" "View client machine information" "Main menu")
+  select option in "${choices[@]}"; do
+    case $option in
+      "ifconfig")
+  
+      ;;
+      "ping")
+  
+      ;;
+      "traceroute")
+  
+      ;;
+      "nslookup")
+  
+      ;;
+      "View network interfaces")
+  
+      ;;
+      "View network routing table")
+  
+      ;;
+      "View current system users")
+      
+      ;;
+      "View client machine information")
+      
+      ;;
+      "Main menu")
+
+      ;;
+      *)
+         echo "---------------------------------------------"
+      echo -e "\n------------Invalid Selection!-------------"
+        networkManagement
+      ;;
+    esac
+  done
+}
+
+#Main menu functionality
+clear
 mainMenu
+
