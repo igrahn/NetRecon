@@ -149,27 +149,45 @@ function fileManagement() {
   
       ;;
       "Remove a file")
+        clear
         echo "--------------------------------------------"
         echo "----------------File Remover----------------"
-        ls
-        echo -n "Which directory is the file in?: "
+        cd ~
+        echo -n "Current directory: " 
+        pwd
+        ls -F | grep "/$"
+        echo -n "Enter parent directory, or enter q to exit: "
         read directory
+        if [ $directory = "q" ]; then
+          clear
+          fileManagement
+        fi
         cd $directory
         clear
         echo "--------------------------------------------"
         echo "----------------File Remover----------------"
         echo -n "Current directory: " 
         pwd
+        echo -se "\n"
         ls
-        echo -n "Enter a file to remove (include extention): "
+        echo -n -e "\nEnter a file to remove (include extention), or enter q to exit: "
         read file
+        if [ $file = "q" ]; then
+          clear
+          fileManagement
+        fi
         rm $file
         echo "File removal complete!"
+        echo -e "\nPress any key to return to file management..."
+        read -n 1 -s
+        clear
+        fileManagement
       ;;
       "Read a file")
-  
+      mainMenu
       ;;
       "Main menu")
+      clear
       mainMenu
       ;;
       *)
