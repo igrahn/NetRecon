@@ -136,6 +136,20 @@ function fileManagement() {
         clear
         echo "--------------------------------------------"
         echo "----------------File Creator----------------"
+        cd ~
+        echo -n "Current directory: " 
+        pwd
+        ls -F | grep "/$"
+        echo -n "Enter desired directory, or enter q to exit: "
+        read directory
+        if [ $directory = "q" ]; then
+          clear
+          fileManagement
+        fi
+        cd $directory
+        clear
+        echo "--------------------------------------------"
+        echo "----------------File Creator----------------"
         echo -n "Enter a file name: "
         read file
         echo -n "Enter a file extension (i.e .txt, .c, .sh ...): "
