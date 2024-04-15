@@ -220,16 +220,32 @@ function networkManagement() {
         #TODO
       ;;
       "View network routing table")
-        #TODO
+        echo "--------------------------------------------"
+        echo "-----------Network Routing Table------------"
+        netstat -rn
+        echo "--------------------------------------------"
+        echo -e "\nPress any key to continue..."
+        read -n 1 -s
+        clear
+        networkManagement
       ;;
       "View current system users")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "-----------Current System Users-------------"
+        who
+        echo "--------------------------------------------"
+        echo -e "\nPress any key to continue..."
+        read -n 1 -s
+        clear
+        networkManagement
       ;;
       "View client machine information")
         #TODO
       ;;
       "Main menu")
-        #TODO
+        clear
+        mainMenu
       ;;
       *)
          echo "---------------------------------------------"
