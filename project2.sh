@@ -119,18 +119,31 @@ function diskManagement() {
 }
 
 function fileManagement() {
-  echo -e "\n---------------File Management---------------\n"
+     echo "---------------------------------------------"
+  echo -e "---------------File Management---------------\n"
   choices=("Present working directory" "List directory contents" "Create a file" "Change file permissions" "Remove a file" "Read a file" "Main menu")
   select option in "${choices[@]}"; do
     case $option in
       "Present working directory")
-  
+      echo -n "Current working directory:"
+      pwd
       ;;
       "List directory contents")
-  
+      echo "Current directory contents: "
+      ls
       ;;
       "Create a file")
-  
+        clear
+        echo "--------------------------------------------"
+        echo "----------------File Creator----------------"
+        echo -n "Enter a file name: "
+        read file
+        echo -n "Enter a file extension (i.e .txt, .c, .sh ...): "
+        read ext
+        fileCreate="$file$ext"
+        nano "$fileCreate"
+        clear
+        fileManagement
       ;;
       "Change file permissions")
   
@@ -194,13 +207,6 @@ function networkManagement() {
   done
 }
 
-# function processManagement() {}
-
-# function userAccountManagement() {}
-
-# function utilities() {}
-
 #Main menu functionality
 clear
 mainMenu
-
