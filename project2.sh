@@ -146,7 +146,7 @@ function fileManagement() {
         fileManagement
       ;;
       "Change file permissions")
-  
+        #TODO
       ;;
       "Remove a file")
         clear
@@ -184,11 +184,11 @@ function fileManagement() {
         fileManagement
       ;;
       "Read a file")
-      mainMenu
+        #TODO
       ;;
       "Main menu")
-      clear
-      mainMenu
+        clear
+        mainMenu
       ;;
       *)
          echo "---------------------------------------------"
@@ -205,31 +205,31 @@ function networkManagement() {
   select option in "${choices[@]}"; do
     case $option in
       "ifconfig")
-  
+        #TODO
       ;;
       "ping")
-  
+        #TODO
       ;;
       "traceroute")
-  
+        #TODO
       ;;
       "nslookup")
-  
+        #TODO
       ;;
       "View network interfaces")
-  
+        #TODO
       ;;
       "View network routing table")
-  
+        #TODO
       ;;
       "View current system users")
-      
+        #TODO
       ;;
       "View client machine information")
-      
+        #TODO
       ;;
       "Main menu")
-
+        #TODO
       ;;
       *)
          echo "---------------------------------------------"
