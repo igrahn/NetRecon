@@ -149,7 +149,22 @@ function fileManagement() {
   
       ;;
       "Remove a file")
-  
+        echo "--------------------------------------------"
+        echo "----------------File Remover----------------"
+        ls
+        echo -n "Which directory is the file in?: "
+        read directory
+        cd $directory
+        clear
+        echo "--------------------------------------------"
+        echo "----------------File Remover----------------"
+        echo -n "Current directory: " 
+        pwd
+        ls
+        echo -n "Enter a file to remove (include extention): "
+        read file
+        rm $file
+        echo "File removal complete!"
       ;;
       "Read a file")
   
