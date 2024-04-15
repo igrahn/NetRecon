@@ -168,7 +168,7 @@ function fileManagement() {
         echo "----------------File Remover----------------"
         echo -n "Current directory: " 
         pwd
-        echo -se "\n"
+        echo -e "\n"
         ls
         echo -n -e "\nEnter a file to remove (include extention), or enter q to exit: "
         read file
