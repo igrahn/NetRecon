@@ -224,7 +224,31 @@ function fileManagement() {
         fileManagement
       ;;
       "Read a file")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "----------------File Reader-----------------"
+        cd ~
+        ls -F | grep "/$"
+        echo -n -e "\nEnter desired directory: "
+        read directory
+        cd $directory
+        clear
+        echo "--------------------------------------------"
+        echo "----------------File Reader-----------------"
+        echo -n "Current directory contents of "
+        pwd
+        ls
+        echo -n "Which file would you like to view?: "
+        read file
+        clear
+        echo "--------------------------------------------"
+        echo "----------------File Reader-----------------"
+        echo -e "Showing contents of $file:\n"
+        cat $file
+        echo -e "\nPress any key to return to file management..."
+        read -n 1 -s
+        clear
+        fileManagement
       ;;
       "Main menu")
         clear
