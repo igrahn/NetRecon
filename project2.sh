@@ -6,7 +6,8 @@
 
 #Main Menu Function
 function mainMenu() {
-  echo -e "\n---------------Main Menu---------------\n"
+     echo "---------------------------------------------"
+  echo -e "------------------Main Menu------------------\n"
 choices=("Disk Management" "File Management" "Network Management" "Process Management" "User Account Management" "Utilities" "Exit")
 
 select option in "${choices[@]}"; do
@@ -41,8 +42,8 @@ select option in "${choices[@]}"; do
       ;;
     *)
       clear
-         echo "---------------------------------------------"
-      echo -e "\n------------Invalid Selection!-------------"
+           echo "---------------------------------------------"
+      echo -e "\n-------------Invalid Selection!--------------"
       mainMenu
       ;;
     esac
@@ -50,7 +51,7 @@ select option in "${choices[@]}"; do
 }
 
 function diskManagement() {
-  echo "---------------------------------------------"
+     echo "---------------------------------------------"
   echo -e "---------------Disk Management---------------\n"
   choices=("Display device info" "Display disk partition info" "Display block device info" "Display mounted disk info" "Main menu")
   select option in "${choices[@]}"; do
@@ -110,8 +111,8 @@ function diskManagement() {
       ;;
       *)
         clear
-        echo "---------------------------------------------"
-        echo -e "\n------------Invalid Selection!-------------"
+             echo "---------------------------------------------"
+        echo -e "\n-------------Invalid Selection!--------------"
         diskManagement
       ;;
     esac
@@ -125,12 +126,35 @@ function fileManagement() {
   select option in "${choices[@]}"; do
     case $option in
       "Present working directory")
-      echo -n "Current working directory:"
-      pwd
+        clear
+        echo "--------------------------------------------"
+        echo "----------Present Working Directory---------"
+        echo -n "Current working directory: "
+        pwd
+        echo -e "\nPress any key to return to file management..."
+        read -n 1 -s
+        clear
+        fileManagement
       ;;
       "List directory contents")
-      echo "Current directory contents: "
-      ls
+        clear
+        echo "--------------------------------------------"
+        echo "--------------Directory Viewer--------------"
+        cd ~
+        ls -F | grep "/$"
+        echo -n -e "\nEnter desired directory: "
+        read directory
+        cd $directory
+        clear
+        echo "--------------------------------------------"
+        echo "--------------Directory Viewer--------------"
+        echo -n "Current directory contents of "
+        pwd
+        ls
+        echo -e "\nPress any key to return to file management..."
+        read -n 1 -s
+        clear
+        fileManagement
       ;;
       "Create a file")
         clear
@@ -150,6 +174,8 @@ function fileManagement() {
         clear
         echo "--------------------------------------------"
         echo "----------------File Creator----------------"
+        echo -n "Current directory: " 
+        pwd
         echo -n "Enter a file name: "
         read file
         echo -n "Enter a file extension (i.e .txt, .c, .sh ...): "
@@ -222,18 +248,70 @@ function networkManagement() {
         #TODO
       ;;
       "ping")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "----------------Network Ping----------------"
+        echo -n "Enter an IP to ping (i.e 8.8.8.8): " 
+        read address
+        echo -n "How many requests?: "
+        read requests
+        if [[ ! $requests =~ ^[0-9]+$ ]]; then
+          clear
+          echo -e "\nEnter an integer!"
+          echo "--------------------------------------------"
+          networkManagement
+        fi
+        echo -e "Pinging $address...\n"
+        command="-c $requests $address"
+        ping $command
+        echo -e "\nPress any key to continue..."
+        read -n 1 -s
+        clear
+        networkManagement 
       ;;
       "traceroute")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "-------------Network Traceroute-------------"
+        echo -n "Enter an IP to trace (i.e 8.8.8.8): " 
+        read address
+        echo -n "How many queries? (default is 3): "
+        read queries
+        if [[ ! $queries =~ ^[0-9]+$ ]]; then
+          clear
+          echo -e "\nEnter an integer!"
+          echo "--------------------------------------------"
+          networkManagement
+        fi
+        command="-q $queries $address"
+        echo -e "Executing traceroute...\n"
+        traceroute $command
+        echo -e "\nPress any key to continue..."
+        read -n 1 -s
+        clear
+        networkManagement
       ;;
       "nslookup")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "-------------Name Server Lookup-------------"
+        echo -n "Enter a domain to lookup (i.e google.com): "
+        read domain
+        echo -e "Showing results for $domain\n"
+        nslookup $domain
+        echo -e "\nPress any key to continue..."
+        read -n 1 -s
+        clear
+        networkManagement
       ;;
       "View network interfaces")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "-----------Network Routing Table------------"
+        ip a
       ;;
       "View network routing table")
+        clear
         echo "--------------------------------------------"
         echo "-----------Network Routing Table------------"
         netstat -rn
@@ -262,8 +340,8 @@ function networkManagement() {
         mainMenu
       ;;
       *)
-         echo "---------------------------------------------"
-      echo -e "\n------------Invalid Selection!-------------"
+           echo "---------------------------------------------"
+      echo -e "\n-------------Invalid Selection!--------------"
         networkManagement
       ;;
     esac
@@ -273,3 +351,4 @@ function networkManagement() {
 #Main menu functionality
 clear
 mainMenu
+
