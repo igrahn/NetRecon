@@ -310,6 +310,7 @@ function networkManagement() {
         command="-q $queries $address"
         echo -e "Executing traceroute...\n"
         traceroute $command
+        echo "--------------------------------------------"
         echo -e "\nPress any key to continue..."
         read -n 1 -s
         clear
@@ -357,7 +358,16 @@ function networkManagement() {
         networkManagement
       ;;
       "View client machine information")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "--------Client Machine Information----------"
+        echo "Current hardware info: "
+        hwinfo --short
+        echo "--------------------------------------------"
+        echo -e "\nPress any key to continue..."
+        read -n 1 -s
+        clear
+        networkManagement
       ;;
       "Main menu")
         clear
