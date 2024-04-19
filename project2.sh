@@ -381,6 +381,43 @@ function networkManagement() {
   done
 }
 
-#Main menu functionality
+function generalUtils() {
+  select option in "Date/Time" "Calendar" "View Manual Page" "Determine File Type" "Determine Command Type" "Sort File" "Search File" "Return to Main Menu"; do
+    case $option in
+      "Date/Time")
+        date
+        ;;
+      "Calendar")
+        cal
+        ;;
+      "View Manual Page")
+        read -p "Program name > " prog
+        man $prog
+        ;;
+      "Determine File Type")
+        read -p "File to investigate > " file
+        file $file
+        ;;
+      "Determine Command Type")
+        read -p "Command > " cmd
+        type $cmd
+        ;;
+      "Sort File")
+        read -p "File to sort > " file
+        cat $file | sort
+        ;;
+      "Search File")
+        read -p "File to search > " file
+        read -p "Search term > " search
+        cat $file | grep $search
+        ;;
+      "Return to Main Menu")
+        mainMenu
+        ;;
+    esac
+  done
+}
+
+# Clear the screen and open the main menu
 clear
 mainMenu
