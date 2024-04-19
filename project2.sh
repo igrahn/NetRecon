@@ -4,54 +4,53 @@
 # ERAU CI 201 / 01PC
 # @TODO: add description.
 
-#Main Menu Function
 function mainMenu() {
-     echo "---------------------------------------------"
+  echo "---------------------------------------------"
   echo -e "------------------Main Menu------------------\n"
-choices=("Disk Management" "File Management" "Network Management" "Process Management" "User Account Management" "Utilities" "Exit")
+  choices=("Disk Management" "File Management" "Network Management" "Process Management" "User Account Management" "Utilities" "Exit")
 
-select option in "${choices[@]}"; do
-  case $option in
-    "Disk Management")
-      clear
-      diskManagement
-      ;;
-    "File Management")
-      clear
-      fileManagement
-      ;;
-    "Network Management")
-      clear
-      networkManagement
-      ;;
-    "Process Management")
-      clear
-      processManagement
-      ;;
-    "User Account Management")
-      clear
-      userAccountManagement
-      ;;
-    "Utilities")
-      clear
-      utilities
-      ;;
-    "Exit")
-      clear
-      exit 0
-      ;;
-    *)
-      clear
-           echo "---------------------------------------------"
-      echo -e "\n-------------Invalid Selection!--------------"
-      mainMenu
-      ;;
+  select option in "${choices[@]}"; do
+    case $option in
+      "Disk Management")
+        clear
+        diskManagement
+        ;;
+      "File Management")
+        clear
+        fileManagement
+        ;;
+      "Network Management")
+        clear
+        networkManagement
+        ;;
+      "Process Management")
+        clear
+        processManagement
+        ;;
+      "User Account Management")
+        clear
+        userAccountManagement
+        ;;
+      "Utilities")
+        clear
+        utilities
+        ;;
+      "Exit")
+        clear
+        exit 0
+        ;;
+      *)
+        clear
+            echo "---------------------------------------------"
+        echo -e "\n-------------Invalid Selection!--------------"
+        mainMenu
+        ;;
     esac
   done
 }
 
 function diskManagement() {
-     echo "---------------------------------------------"
+  echo "---------------------------------------------"
   echo -e "---------------Disk Management---------------\n"
   choices=("Display device info" "Display disk partition info" "Display block device info" "Display mounted disk info" "Main menu")
   select option in "${choices[@]}"; do
@@ -62,16 +61,16 @@ function diskManagement() {
         echo "-------------Device Information-------------"
         echo -n "Current user: "
         whoami
-        echo -n "Kernel name: " 
+        echo -n "Kernel name: "
         uname
-        echo -n "Device uptime: " 
+        echo -n "Device uptime: "
         uptime
         echo "--------------------------------------------"
         echo "Press any key to continue..."
         read -n 1 -s
         clear
         diskManagement
-      ;;
+        ;;
       "Display disk partition info")
         clear
         echo "--------------------------------------------"
@@ -82,7 +81,7 @@ function diskManagement() {
         read -n 1 -s
         clear
         diskManagement
-      ;;
+        ;;
       "Display block device info")
         clear
         echo "--------------------------------------------"
@@ -93,7 +92,7 @@ function diskManagement() {
         read -n 1 -s
         clear
         diskManagement
-      ;;
+        ;;
       "Display mounted disk info")
         clear
         echo "--------------------------------------------"
@@ -104,17 +103,17 @@ function diskManagement() {
         read -n 1 -s
         clear
         diskManagement
-      ;;
+        ;;
       "Main menu")
         clear
         mainMenu
-      ;;
+        ;;
       *)
         clear
              echo "---------------------------------------------"
         echo -e "\n-------------Invalid Selection!--------------"
         diskManagement
-      ;;
+        ;;
     esac
   done
 }
@@ -161,7 +160,7 @@ function fileManagement() {
         echo "--------------------------------------------"
         echo "----------------File Creator----------------"
         cd ~
-        echo -n "Current directory: " 
+        echo -n "Current directory: "
         pwd
         ls -F | grep "/$"
         echo -n "Enter desired directory, or enter q to exit: "
@@ -174,7 +173,7 @@ function fileManagement() {
         clear
         echo "--------------------------------------------"
         echo "----------------File Creator----------------"
-        echo -n "Current directory: " 
+        echo -n "Current directory: "
         pwd
         echo -n "Enter a file name: "
         read file
@@ -193,7 +192,7 @@ function fileManagement() {
         echo "--------------------------------------------"
         echo "----------------File Remover----------------"
         cd ~
-        echo -n "Current directory: " 
+        echo -n "Current directory: "
         pwd
         ls -F | grep "/$"
         echo -n "Enter parent directory, or enter q to exit: "
@@ -206,7 +205,7 @@ function fileManagement() {
         clear
         echo "--------------------------------------------"
         echo "----------------File Remover----------------"
-        echo -n "Current directory: " 
+        echo -n "Current directory: "
         pwd
         echo -e "\n"
         ls
@@ -270,12 +269,12 @@ function networkManagement() {
     case $option in
       "ifconfig")
         #TODO
-      ;;
+        ;;
       "ping")
         clear
         echo "--------------------------------------------"
         echo "----------------Network Ping----------------"
-        echo -n "Enter an IP to ping (i.e 8.8.8.8): " 
+        echo -n "Enter an IP to ping (i.e 8.8.8.8): "
         read address
         echo -n "How many requests?: "
         read requests
@@ -291,13 +290,13 @@ function networkManagement() {
         echo -e "\nPress any key to continue..."
         read -n 1 -s
         clear
-        networkManagement 
-      ;;
+        networkManagement
+        ;;
       "traceroute")
         clear
         echo "--------------------------------------------"
         echo "-------------Network Traceroute-------------"
-        echo -n "Enter an IP to trace (i.e 8.8.8.8): " 
+        echo -n "Enter an IP to trace (i.e 8.8.8.8): "
         read address
         echo -n "How many queries? (default is 3): "
         read queries
@@ -315,7 +314,7 @@ function networkManagement() {
         read -n 1 -s
         clear
         networkManagement
-      ;;
+        ;;
       "nslookup")
         clear
         echo "--------------------------------------------"
@@ -328,13 +327,13 @@ function networkManagement() {
         read -n 1 -s
         clear
         networkManagement
-      ;;
+        ;;
       "View network interfaces")
         clear
         echo "--------------------------------------------"
         echo "-----------Network Routing Table------------"
         ip a
-      ;;
+        ;;
       "View network routing table")
         clear
         echo "--------------------------------------------"
@@ -345,7 +344,7 @@ function networkManagement() {
         read -n 1 -s
         clear
         networkManagement
-      ;;
+        ;;
       "View current system users")
         clear
         echo "--------------------------------------------"
@@ -356,7 +355,7 @@ function networkManagement() {
         read -n 1 -s
         clear
         networkManagement
-      ;;
+        ;;
       "View client machine information")
         clear
         echo "--------------------------------------------"
@@ -368,16 +367,16 @@ function networkManagement() {
         read -n 1 -s
         clear
         networkManagement
-      ;;
+        ;;
       "Main menu")
         clear
         mainMenu
-      ;;
+        ;;
       *)
-           echo "---------------------------------------------"
-      echo -e "\n-------------Invalid Selection!--------------"
+        echo "---------------------------------------------"
+        echo -e "\n-------------Invalid Selection!--------------"
         networkManagement
-      ;;
+        ;;
     esac
   done
 }
@@ -385,4 +384,3 @@ function networkManagement() {
 #Main menu functionality
 clear
 mainMenu
-
