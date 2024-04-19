@@ -381,6 +381,74 @@ function networkManagement() {
   done
 }
 
+function accountManagement() {
+  select option in "Add User" "Delete User" "Lock User Password" "Investigate User" "Find User" "Add Group" "Delete Group" "Find Group" "Return to Main Menu"; do
+    case $option in
+      "Add User")
+        read -p "New username > " newUser
+        useradd $newUser
+        ;;
+      "Delete User")
+        read -p "User to delete > " delUser
+        read -p "Are you sure you want to delete $delUser?" confirmation
+
+        if [[ $confirmation != "Y" || $confirmation != "y" || $confirmation != "yes" ]]; then
+          echo "Not deleting"
+          accountManagement
+        else
+          userdel $delUser
+        fi
+        ;;
+      "Lock User Password")
+        read -p "User to lock > " lockUser
+        passwd -l $lockUser
+        ;;
+      "Investigate User")
+        read -p "User to investigate > " invUser
+        finger $invUser
+        ;;
+      "Find User")
+        read -p "User to query > " queryUser
+
+        id $queryUser > /dev/null 2>&1
+
+        if [[ $? == 0 ]]; then
+          echo "$queryUser exists on this system"
+        else
+          echo "$queryUser does not exist on this system"
+        fi
+        ;;
+      "Add Group")
+        read -p "New group > " newGroup
+        groupadd $newGroup
+        ;;
+      "Delete Group")
+        read -p "Group to delete > " delGroup
+        read -p "Are you sure you want to delete $delGroup?" confirmation
+
+        if [[ $confirmation != "Y" || $confirmation != "y" || $confirmation != "yes" ]]; then
+          echo "Not deleting"
+          accountManagement
+        else
+          groupdel $delUser
+        fi
+        ;;
+      "Find Group")
+        read -p "Group to query > " queryGroup
+
+        if [[ grep -q -E "^$queryGroup:" /etc/group ]]; then
+          echo "$queryGroup exists on this system"
+        else
+          echo "$queryGroup does not exist on this system"
+        fi
+        ;;
+      "Return to Main Menu")
+        mainMenu
+        ;;
+    esac
+  done
+}
+
 function generalUtils() {
   select option in "Date/Time" "Calendar" "View Manual Page" "Determine File Type" "Determine Command Type" "Sort File" "Search File" "Return to Main Menu"; do
     case $option in
