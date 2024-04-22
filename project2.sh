@@ -535,7 +535,7 @@ function processManagement() {
   done
 }
 
-function accountManagement() {
+function userAccountManagement() {
   select option in "Add User" "Delete User" "Lock User Password" "Investigate User" "Find User" "Add Group" "Delete Group" "Find Group" "Return to Main Menu"; do
     case $option in
       "Add User")
@@ -603,7 +603,7 @@ function accountManagement() {
   done
 }
 
-function generalUtils() {
+function utilities() {
   select option in "Date/Time" "Calendar" "View Manual Page" "Determine File Type" "Determine Command Type" "Sort File" "Search File" "Return to Main Menu"; do
     case $option in
       "Date/Time")
