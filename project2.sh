@@ -506,6 +506,35 @@ function networkManagement() {
   done
 }
 
+function processManagement() {
+  select option in "Display Processes" "Display Processes (by usage)" "Terminate a Process" "Display Disk Usage" "Display Free Disk Space" "Display System Uptime" "Return to Main Menu"; do
+    case $option in
+      "Display Processes")
+        htop
+        ;;
+      "Display Processes (by usage)")
+        htop
+        ;;
+      "Terminate a Process")
+        read -p "Process ID > " process
+        kill $process
+        ;;
+      "Display Disk Usage")
+        df
+        ;;
+      "Display Free Disk Space")
+        df -h
+        ;;
+      "Display System Uptime")
+        uptime
+        ;;
+      "Return to Main Menu")
+        mainMenu
+        ;;
+    esac
+  done
+}
+
 function accountManagement() {
   select option in "Add User" "Delete User" "Lock User Password" "Investigate User" "Find User" "Add Group" "Delete Group" "Find Group" "Return to Main Menu"; do
     case $option in
