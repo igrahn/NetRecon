@@ -299,7 +299,7 @@ function fileManagement() {
             *)
               clear
               echo "Invalid permissions specified."
-              fileManagement 
+              fileManagement
             ;;
           esac
         done
@@ -510,23 +510,24 @@ function processManagement() {
   select option in "Display Processes" "Display Processes (by usage)" "Terminate a Process" "Display Disk Usage" "Display Free Disk Space" "Display System Uptime" "Return to Main Menu"; do
     case $option in
       "Display Processes")
-        htop
+        top
         ;;
       "Display Processes (by usage)")
-        htop
+        top
         ;;
       "Terminate a Process")
         read -p "Process ID > " process
         kill $process
         ;;
       "Display Disk Usage")
-        df
+        df -h
         ;;
       "Display Free Disk Space")
         df -h
         ;;
       "Display System Uptime")
         uptime
+        uptime -p
         ;;
       "Return to Main Menu")
         mainMenu
