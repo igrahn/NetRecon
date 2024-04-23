@@ -547,11 +547,10 @@ function userAccountManagement() {
         read -p "User to delete > " delUser
         read -p "Are you sure you want to delete $delUser?" confirmation
 
-        if [[ $confirmation != "Y" || $confirmation != "y" || $confirmation != "yes" ]]; then
-          echo "Not deleting"
-          accountManagement
-        else
+        if [[ $confirmation == "Y" || $confirmation == "y" || $confirmation == "yes" ]]; then
           userdel $delUser
+        else
+          echo "Not deleting"
         fi
         ;;
       "Lock User Password")
@@ -583,7 +582,6 @@ function userAccountManagement() {
 
         if [[ $confirmation != "Y" || $confirmation != "y" || $confirmation != "yes" ]]; then
           echo "Not deleting"
-          accountManagement
         else
           groupdel $delUser
         fi
