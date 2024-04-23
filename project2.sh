@@ -2,7 +2,7 @@
 # Group member 1: Ian Grahn
 # Group member 2: Calvin Lindemann
 # ERAU CI 201 / 01PC
-# @TODO: add description.
+# This program is an indepth linux management program, allowing the user to access information ranging from disk management, to network and process management.
 
 function mainMenu() {
   echo "---------------------------------------------"
@@ -29,11 +29,11 @@ function mainMenu() {
         ;;
       "User Account Management")
         clear
-        userAccountManagement
+        accountManagement
         ;;
       "Utilities")
         clear
-        utilities
+        generalUtils
         ;;
       "Exit")
         clear
@@ -185,7 +185,124 @@ function fileManagement() {
         fileManagement
       ;;
       "Change file permissions")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "-------------File Permissions---------------"
+        cd ~
+        ls -F | grep "/$"
+        echo -n -e "\nEnter desired directory: "
+        read directory
+        cd $directory
+        clear
+        echo "--------------------------------------------"
+        echo "-------------File Permissions---------------"
+        echo -n "Current directory contents of "
+        pwd
+        ls
+        echo -n "Which file would you like to modify?: "
+        read file
+        clear
+        echo "--------------------------------------------"
+        echo "-------------File Permissions---------------"
+        echo -e "Permission manager for $file:\n"
+        choices=("777" "755" "700" "666" "644" "600" "555" "444")
+        select option in "${choices[@]}"; do
+          case $option in
+            "777")
+              clear
+              chmod="777"
+              echo "Changing file permissions to: everyone can read, write, and execute."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            "755")
+              clear
+              chmod="755"
+              echo "Changing file permissions to: owner can do anything, others can read and execute."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            "700")
+              clear
+              chmod="700"
+              echo "Changing file permissions to: only owner can read, write, and execute."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            "666")
+              clear
+              chmod="666"
+              echo "Changing file permissions to: everyone can read and write, but not execute."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            "644")
+              clear
+              chmod="644"
+              echo "Changing file permissions to: owner can read and write, others can only read."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            "600")
+              clear
+              chmod="600"
+              echo "Changing file permissions to: only owner can read and write."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            "555")
+              clear
+              chmod="555"
+              echo "Changing file permissions to: everyone can read and execute, but not write."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            "444")
+              clear
+              chmod="444"
+              echo "Changing file permissions to: everyone can only read, no writing or executing."
+              chmod $chmod $file
+              echo "Permission modification of $chmod for $file is complete."
+              echo -e "\nPress any key to return to file management..."
+              read -n 1 -s
+              clear
+              fileManagement
+            ;;
+            *)
+              clear
+              echo "Invalid permissions specified."
+              fileManagement 
+            ;;
+          esac
+        done
       ;;
       "Remove a file")
         clear
@@ -268,7 +385,15 @@ function networkManagement() {
   select option in "${choices[@]}"; do
     case $option in
       "ifconfig")
-        #TODO
+        clear
+        echo "--------------------------------------------"
+        echo "-----------Network Interface Info-----------"
+        ifconfig
+        echo "--------------------------------------------"
+        echo "Press any key to continue..."
+        read -n 1 -s
+        clear
+        networkManagement
         ;;
       "ping")
         clear
@@ -436,7 +561,7 @@ function accountManagement() {
       "Find Group")
         read -p "Group to query > " queryGroup
 
-        if [[ grep -q -E "^$queryGroup:" /etc/group ]]; then
+        if grep -q -E "^$queryGroup:" /etc/group; then
           echo "$queryGroup exists on this system"
         else
           echo "$queryGroup does not exist on this system"
