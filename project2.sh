@@ -29,11 +29,11 @@ function mainMenu() {
         ;;
       "User Account Management")
         clear
-        accountManagement
+        userAccountManagement
         ;;
       "Utilities")
         clear
-        generalUtils
+        utilities
         ;;
       "Exit")
         clear
