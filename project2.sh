@@ -326,7 +326,7 @@ function fileManagement() {
         pwd
         echo -e "\n"
         ls
-        echo -n -e "\nEnter a file to remove (include extention), or enter q to exit: "
+        echo -n -e "\nEnter a file to remove (include extension), or enter q to exit: "
         read file
         if [ $file = "q" ]; then
           clear
