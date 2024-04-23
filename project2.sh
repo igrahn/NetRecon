@@ -532,6 +532,9 @@ function processManagement() {
       "Return to Main Menu")
         mainMenu
         ;;
+      *)
+        echo "Option not found. Check your selection and try again."
+        ;;
     esac
   done
 }
@@ -598,6 +601,9 @@ function userAccountManagement() {
       "Return to Main Menu")
         mainMenu
         ;;
+      *)
+        echo "Option not found. Check your selection and try again."
+        ;;
     esac
   done
 }
@@ -656,6 +662,9 @@ function utilities() {
         ;;
       "Return to Main Menu")
         mainMenu
+        ;;
+      *)
+        echo "Option not found. Check your selection and try again."
         ;;
     esac
   done
