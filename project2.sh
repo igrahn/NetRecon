@@ -625,12 +625,34 @@ function utilities() {
         ;;
       "Sort File")
         read -p "File to sort > " file
-        cat $file | sort
+        read -p "Output file > " outFile
+
+        overwrite="no"
+        if [[ -e $outFile ]]; then
+          read -p "Overwrite file? (Y/n, no appends output) > " overwrite
+        fi
+
+        if [[ $overwrite == "Y" || $overwrite == "y" || $overwrite == "yes" ]]; then
+          cat $file | sort | tee $outFile
+        else
+          cat $file | sort | tee -a $outFile
+        fi
         ;;
       "Search File")
         read -p "File to search > " file
         read -p "Search term > " search
-        cat $file | grep $search
+        read -p "Output file > " outFile
+
+        overwrite="no"
+        if [[ -e $outFile ]]; then
+          read -p "Overwrite file? (Y/n, no appends output) > " overwrite
+        fi
+
+        if [[ $overwrite == "Y" || $overwrite == "y" || $overwrite == "yes" ]]; then
+          cat $file | grep $search | tee $outFile
+        else
+          cat $file | grep $search | tee -a $outFile
+        fi
         ;;
       "Return to Main Menu")
         mainMenu
